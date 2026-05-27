@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        MAR DE MONSTROS
+    </title>
+
+    <!-- GOOGLE FONTS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Montserrat:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS PRINCIPAL -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- ÁUDIOS DOS PERSONAGENS -->
+    <!-- ========================================= -->
+
+    <audio id="som-polites" src="audios/polites.mp3"></audio>
+
+    <audio id="som-odisseu" src="audios/odisseu.mp3"></audio>
+
+    <audio id="som-hermes" src="audios/hermes.mp3"></audio>
+
+    <audio id="som-atena" src="audios/atena.mp3"></audio>
+
+    <!-- ========================================= -->
+    <!-- HEADER -->
+    <!-- ========================================= -->
+
+    <header>
+
+        <h1 class="main-title">
+            MAR DE MONSTROS
+        </h1>
+
+    </header>
+
+    <!-- ========================================= -->
+    <!-- INTRODUÇÃO CINEMATOGRÁFICA -->
+    <!-- ========================================= -->
+
+    <main class="tutorial-container">
+
+        <!-- POLITES -->
+
+        <section class="char-row row-right">
+
+            <div class="char-text">
+
+                <h2 class="name-polites">
+                    Polites
+                </h2>
+
+                <div class="glass-box">
+
+                    <p>
+                        "Saudações, herói.
+                        Toda jornada começa com coragem.
+                        O mundo está esperando por você."
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="char-frame">
+
+                <img
+                    src="imagens/polites.png"
+                    alt="Polites"
+                    class="avatar"
+                    onclick="tocarMusica('som-polites')">
+
+            </div>
+
+        </section>
+
+        <!-- ODISSEU -->
+
+        <section class="char-row row-left">
+
+            <div class="char-text">
+
+                <h2 class="name-odisseu">
+                    Odisseu
+                </h2>
+
+                <div class="glass-box">
+
+                    <p>
+                        "O Mar de Monstros exige estratégia.
+                        Observe, aprenda e mantenha o foco."
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="char-frame">
+
+                <img
+                    src="imagens/odisseu.png"
+                    alt="Odisseu"
+                    class="avatar"
+                    onclick="tocarMusica('som-odisseu')">
+
+            </div>
+
+        </section>
+
+        <!-- HERMES -->
+
+        <section class="char-row row-right">
+
+            <div class="char-text">
+
+                <h2 class="name-hermes">
+                    Hermes
+                </h2>
+
+                <div class="glass-box">
+
+                    <p>
+                        "Vamos logo, guerreiro!
+                        Os desafios do Olimpo não esperam ninguém."
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="char-frame">
+
+                <img
+                    src="imagens/hermes.png"
+                    alt="Hermes"
+                    class="avatar"
+                    onclick="tocarMusica('som-hermes')">
+
+            </div>
+
+        </section>
+
+        <!-- ATENA -->
+
+        <section class="char-row row-left">
+
+            <div class="char-text">
+
+                <h2 class="name-atena">
+                    Atena
+                </h2>
+
+                <div class="glass-box">
+
+                    <p>
+                        "Conhecimento é a arma mais poderosa.
+                        Prepare-se para iniciar sua odisseia."
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="char-frame">
+
+                <img
+                    src="imagens/atena.png"
+                    alt="Atena"
+                    class="avatar"
+                    onclick="tocarMusica('som-atena')">
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ========================================= -->
+    <!-- BOTÃO PRINCIPAL -->
+    <!-- ========================================= -->
+
+    <footer class="footer-login">
+
+        <a
+            href="login-index.html"
+            class="epic-button">
+
+            ENTRAR NA ODISSEIA
+
+        </a>
+
+    </footer>
+
+    <!-- ========================================= -->
+    <!-- SCRIPT LOCAL -->
+    <!-- ========================================= -->
+
+    <script>
+
+        // =====================================
+        // TOCAR MÚSICA COM FADE
+        // =====================================
+
+        function tocarMusica(id) {
+
+            const som =
+                document.getElementById(id);
+
+            const todosAudios =
+                document.querySelectorAll("audio");
+
+            const duracaoFade = 800;
+
+            const fadeOut = (audio) => {
+
+                if (!audio.paused) {
+
+                    let intervalo =
+                        setInterval(() => {
+
+                            if (audio.volume > 0.05) {
+
+                                audio.volume -= 0.05;
+
+                            } else {
+
+                                audio.pause();
+
+                                audio.currentTime = 0;
+
+                                audio.volume = 1;
+
+                                clearInterval(intervalo);
+                            }
+
+                        }, duracaoFade / 20);
+                }
+            };
+
+            // =================================
+            // SE O ÁUDIO JÁ ESTÁ TOCANDO
+            // =================================
+
+            if (!som.paused) {
+
+                fadeOut(som);
+
+                return;
+            }
+
+            // =================================
+            // PARAR OUTROS ÁUDIOS
+            // =================================
+
+            todosAudios.forEach(audio => {
+
+                if (audio !== som) {
+
+                    fadeOut(audio);
+                }
+
+            });
+
+            // =================================
+            // FADE IN
+            // =================================
+
+            som.volume = 0;
+
+            som.play()
+                .then(() => {
+
+                    let intervaloIn =
+                        setInterval(() => {
+
+                            if (som.volume < 0.95) {
+
+                                som.volume += 0.05;
+
+                            } else {
+
+                                som.volume = 1;
+
+                                clearInterval(intervaloIn);
+                            }
+
+                        }, duracaoFade / 20);
+
+                })
+                .catch(error => {
+
+                    console.log(
+                        "Erro ao reproduzir áudio:",
+                        error
+                    );
+
+                });
+        }
+
+    </script>
+
+</body>
+
+</html>

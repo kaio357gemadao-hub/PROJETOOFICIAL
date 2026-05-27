@@ -1,0 +1,442 @@
+/* =========================================
+   PROJETO MAR - STYLE LOGIN
+   TEMA CINEMATOGRÁFICO GLASSMORPHISM
+========================================= */
+
+/* =========================================
+   RESET GLOBAL CONTROLADO
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* =========================================
+   BODY LOGIN
+========================================= */
+
+body.login-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.82),
+            rgba(0, 12, 28, 0.95)
+        ),
+        url("fundo2.png");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    opacity: 0;
+
+    animation: fadeLogin 1s ease forwards;
+
+    will-change: opacity;
+}
+
+/* =========================================
+   CONTAINER PRINCIPAL
+========================================= */
+
+.login-container {
+    width: 100%;
+    max-width: 430px;
+
+    position: relative;
+
+    z-index: 2;
+
+    transform: translateY(20px);
+
+    animation: slideContainer 1s ease forwards;
+
+    will-change: transform, opacity;
+}
+
+/* =========================================
+   CARD LOGIN
+========================================= */
+
+.login-card {
+    width: 100%;
+
+    padding: 42px;
+
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.06);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.45),
+        0 0 30px rgba(255, 215, 0, 0.04);
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+
+    will-change: transform;
+}
+
+.login-card:hover {
+    transform: translateY(-4px);
+
+    border-color: rgba(255, 215, 0, 0.18);
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.55),
+        0 0 40px rgba(255, 215, 0, 0.08);
+}
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.login-title {
+    margin-bottom: 35px;
+
+    text-align: center;
+
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    color: #ffd700;
+
+    text-shadow:
+        0 0 12px rgba(255, 215, 0, 0.55),
+        0 0 25px rgba(0, 180, 255, 0.2);
+}
+
+/* =========================================
+   FORMULÁRIO
+========================================= */
+
+.login-form {
+    width: 100%;
+}
+
+/* =========================================
+   GRUPO INPUT
+========================================= */
+
+.input-group {
+    margin-bottom: 24px;
+}
+
+/* =========================================
+   LABELS
+========================================= */
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-size: 0.92rem;
+    font-weight: 500;
+
+    letter-spacing: 1px;
+
+    color: rgba(255, 255, 255, 0.84);
+}
+
+/* =========================================
+   INPUTS
+========================================= */
+
+.input-group input {
+    width: 100%;
+
+    padding: 15px 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    background: rgba(0, 0, 0, 0.38);
+
+    color: #ffffff;
+
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+
+    outline: none;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease,
+        transform 0.25s ease;
+
+    will-change: transform, box-shadow;
+}
+
+/* =========================================
+   PLACEHOLDER
+========================================= */
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.32);
+}
+
+/* =========================================
+   FOCUS INPUT
+========================================= */
+
+.input-group input:focus {
+    border-color: rgba(255, 215, 0, 0.8);
+
+    background: rgba(0, 0, 0, 0.52);
+
+    box-shadow:
+        0 0 0 1px rgba(255, 215, 0, 0.22),
+        0 0 18px rgba(255, 215, 0, 0.18),
+        0 0 30px rgba(0, 170, 255, 0.12);
+
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   WRAPPER SENHA
+========================================= */
+
+.password-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+/* =========================================
+   INPUT SENHA
+========================================= */
+
+.password-wrapper input {
+    padding-right: 52px;
+}
+
+/* =========================================
+   BOTÃO VISUALIZAR SENHA
+========================================= */
+
+.toggle-password {
+    position: absolute;
+
+    right: 16px;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    color: rgba(255, 215, 0, 0.75);
+
+    font-size: 1.1rem;
+
+    transition:
+        color 0.3s ease,
+        transform 0.25s ease,
+        opacity 0.25s ease;
+
+    opacity: 0.85;
+
+    will-change: transform;
+}
+
+.toggle-password:hover {
+    color: #ffd700;
+
+    opacity: 1;
+
+    transform: scale(1.08);
+}
+
+/* =========================================
+   BOTÃO PRINCIPAL
+========================================= */
+
+.epic-button {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 16px 20px;
+
+    border-radius: 14px;
+
+    border: 2px solid rgba(255, 215, 0, 0.7);
+
+    background: rgba(255, 215, 0, 0.05);
+
+    color: #ffd700;
+
+    cursor: pointer;
+
+    font-family: 'Cinzel', serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+
+    will-change: transform;
+}
+
+/* =========================================
+   HOVER BOTÃO
+========================================= */
+
+.epic-button:hover {
+    background: #ffd700;
+
+    color: #000000;
+
+    border-color: #ffd700;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 18px rgba(255, 215, 0, 0.5),
+        0 0 35px rgba(255, 215, 0, 0.22);
+}
+
+/* =========================================
+   ACTIVE BOTÃO
+========================================= */
+
+.epic-button:active {
+    transform: scale(0.985);
+}
+
+/* =========================================
+   FOCUS BOTÃO
+========================================= */
+
+.epic-button:focus {
+    outline: none;
+
+    box-shadow:
+        0 0 0 2px rgba(255, 215, 0, 0.25),
+        0 0 24px rgba(255, 215, 0, 0.25);
+}
+
+/* =========================================
+   TEXTO AUXILIAR
+========================================= */
+
+.login-footer-text {
+    margin-top: 24px;
+
+    text-align: center;
+
+    font-size: 0.9rem;
+
+    color: rgba(255, 255, 255, 0.58);
+
+    line-height: 1.6;
+}
+
+/* =========================================
+   ANIMAÇÕES
+========================================= */
+
+@keyframes fadeLogin {
+
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideContainer {
+
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media screen and (max-width: 768px) {
+
+    .login-container {
+        max-width: 95%;
+    }
+
+    .login-card {
+        padding: 32px 24px;
+    }
+
+    .login-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    body.login-page {
+        padding: 16px;
+    }
+
+    .login-card {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .login-title {
+        font-size: 1.55rem;
+        letter-spacing: 2px;
+    }
+
+    .input-group input {
+        padding: 14px 16px;
+    }
+
+    .epic-button {
+        padding: 15px 18px;
+        font-size: 1rem;
+    }
+}

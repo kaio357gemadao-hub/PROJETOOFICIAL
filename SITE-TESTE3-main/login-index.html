@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Login | Projeto MAR
+    </title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="style-login.css">
+
+</head>
+
+<body class="login-page">
+
+    <main class="login-container">
+
+        <section class="login-card">
+
+            <!-- TÍTULO -->
+
+            <header class="login-header">
+
+                <h1 class="login-title">
+
+                    MAR DE MONSTROS
+
+                </h1>
+
+            </header>
+
+            <!-- BOTÃO GOOGLE -->
+
+            <div class="login-form">
+
+                <button
+                    id="btn-login-entrar"
+                    class="epic-button">
+
+                    ENTRAR COM GOOGLE
+
+                </button>
+
+            </div>
+
+            <!-- TEXTO -->
+
+            <footer class="login-footer">
+
+                <p class="login-footer-text">
+
+                    Prepare-se para navegar pelo
+                    conhecimento e enfrentar os
+                    desafios do Projeto MAR.
+
+                </p>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+    <!-- FIREBASE LOGIN -->
+
+    <script type="module">
+
+        import { loginGoogle } from "./firebase.js";
+
+        const botaoLogin =
+            document.getElementById(
+                "btn-login-entrar"
+            );
+
+        botaoLogin.addEventListener(
+            "click",
+            async () => {
+
+                try {
+
+                    console.log(
+                        "Botão clicado"
+                    );
+
+                    const result =
+                        await loginGoogle();
+
+                    const user =
+                        result.user;
+
+                    console.log(
+                        "Usuário logado:",
+                        user
+                    );
+
+                    alert(
+                        "Bem-vindo, " +
+                        user.displayName
+                    );
+
+                    window.location.href =
+                        "busca.html";
+
+                } catch(error) {
+
+                    console.log(
+                        "ERRO:",
+                        error
+                    );
+
+                    alert(
+                        "Erro ao fazer login"
+                    );
+
+                }
+
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>
